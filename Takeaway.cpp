@@ -89,5 +89,5 @@ int main()
 	Appetiser food("burger",234,2.35,true);
 	food.getName();
 	cout << food.getCalories();
-	cout << food.getPrice();
-}
+	cout << food.getPrice()<< endl;	
+};

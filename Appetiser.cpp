@@ -9,4 +9,3 @@ void Appetiser::toString()
 {
     cout << "Hello";
 }
-	
