@@ -12,8 +12,9 @@ protected:
 	float price;
 public:
 	Item(string na, int cal, float pr);
+	void toString();
+	string getName();
 	int getCalories();
-	void getName();
 	float getPrice();
 };
 

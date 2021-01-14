@@ -19,6 +19,9 @@ Good luck!
 //#include "Order.h"
 #include "Item.h"
 #include "Appetiser.h"
+#include "MainCourse.h"
+#include "Beverage.h"
+
 
 #include <iostream>
 #include <vector>
@@ -86,8 +89,10 @@ int main()
 	std::getchar();
 	double price = 9.99;
 
-	Appetiser food("burger",234,2.35,true);
-	food.getName();
-	cout << food.getCalories();
-	cout << food.getPrice()<< endl;	
+	MainCourse food("burger",234,2.35);
+	cout << food.getName() << endl;
+	cout << food.getCalories() << endl;
+	cout << food.getPrice() << endl;	
+
+
 };
