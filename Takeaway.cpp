@@ -15,12 +15,13 @@ Good luck!
 ------------------------------------------------------ */
 #define _CRT_SECURE_NO_WARNINGS
 
-//#include "Menu.h"
+#include "Menu.h"
 //#include "Order.h"
 #include "Item.h"
 #include "Appetiser.h"
 #include "MainCourse.h"
 #include "Beverage.h"
+#include "ItemList.h"
 
 
 #include <iostream>
@@ -84,7 +85,8 @@ int main()
 		parameters.clear();
 
 	}
-	*/
+	
+
 	cout << "Good evening" << endl;
 	std::getchar();
 	double price = 9.99;
@@ -92,7 +94,9 @@ int main()
 	MainCourse food("burger",234,2.35);
 	cout << food.getName() << endl;
 	cout << food.getCalories() << endl;
-	cout << food.getPrice() << endl;	
-
-
+	cout << food.getPrice() << endl;
+	*/
+	
+	Menu menu = Menu("menu.csv");
+	menu.toString();
 };
