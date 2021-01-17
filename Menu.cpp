@@ -86,6 +86,7 @@ void Menu::addBeverage(string line)
 void Menu::toString()
 {
     cout << "----------------Appetisers----------------" << endl;
+    cout << "(1) ";
     Items[0]->toString();
     for(int i = 1; i < Items.size(); i++)
     {
