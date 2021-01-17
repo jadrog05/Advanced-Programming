@@ -6,6 +6,7 @@ class Order : public ItemList
 {
     public:
     Order();
+    void toString();
     void addItem(int itemNumber);
     void calculateTotal();
     void printReceipt();

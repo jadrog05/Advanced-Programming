@@ -38,7 +38,7 @@ void Menu::addAppetiser(string line)
     }
 
 
-    if(line_Vec[4] == "t")
+    if(line_Vec[4] == "y")
     {
         share = true;
     }else
@@ -46,7 +46,7 @@ void Menu::addAppetiser(string line)
         share = false;
     }
 
-    if(line_Vec[5] == "t")
+    if(line_Vec[5] == "y")
     {
         twoFO = true;
     }else
@@ -85,22 +85,5 @@ void Menu::addBeverage(string line)
 
 void Menu::toString()
 {
-    cout << "----------------Appetisers----------------" << endl;
-    cout << "(1) Nachos: £4.99, 600 cal (shareable)" << endl;
-    cout << "(2) Buffalo wings: £3.99, 450 cal (2-4-1)" << endl;
-    cout << "(3) Garlic bread: £3.99, 500 cal (2-4-1)" << endl;
-    cout << endl;
-    cout << "----------------Main dishes----------------" << endl;
-    cout << "(4) Burger: £9.99, 950 cal" << endl;
-    cout << "(5) Mac & cheese: £7.99, 850 cal" << endl;
-    cout << "(6) Fish & chips: £8.99, 1000 cal" << endl;
-    cout << "(7) Chicken tikka masala: £6.99, 700 cal" << endl;
-    cout << endl;
-    cout << "----------------Beverages----------------" << endl;
-    cout << "(8) Lager: £3.50, 200 cal (568ml, 4.5% abv)" << endl;
-    cout << "(9) White wine: £4.00, 150 cal (175ml, 11.5% abv)" << endl;
-    cout << "(10) Red wine: £4.00, 170 cal (175ml, 12.5% abv)" << endl;
-    cout << "(11) Coke: £2.50, 140 cal (330ml)" << endl;
-    cout << "(12) Water: £1.50, 0 cal (330ml)" << endl;
-    cout << endl;
+    
 }

@@ -3,13 +3,12 @@
 	
 class Beverage : public Item 
 {
-	private:
+private:
 	float abv;
 	int volume;
-	public:
-		Beverage(string na, int cal, float pri, float AlcBV, int vol);
-		float getAbv();
-		int getVolume();
-		~Beverage();
-
+public:
+	Beverage(string na, int cal, float pri, float AlcBV, int vol);
+	void toString();
+	float getAbv();
+	int getVolume();
 };

@@ -12,7 +12,7 @@ class ItemList
 {
 public:
     vector<Item*> Items;
-    void toString();
+    virtual void toString() = 0;
     ItemList();
     void Load(Item*);;
 };

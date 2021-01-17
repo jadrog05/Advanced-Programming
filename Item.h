@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <iostream>
+
 using namespace std;
 
 class Item 
@@ -11,7 +12,7 @@ protected:
 	float price;
 public:
 	Item(string na, int cal, float pr);
-	void toString();
+	virtual void toString() = 0;
 	string getName();
 	int getCalories();
 	float getPrice();
