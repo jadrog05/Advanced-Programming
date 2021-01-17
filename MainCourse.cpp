@@ -2,7 +2,7 @@
 	
 MainCourse::MainCourse(string na, int cal, float pri) : Item(na, cal, pri)
 {
-	
+	type = "MainCourse";
 }
 
 void MainCourse::toString()

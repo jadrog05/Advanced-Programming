@@ -4,6 +4,7 @@ Beverage::Beverage(string na, int cal, float pri, float AlcBV, int vol) : Item(n
 {
 	abv = AlcBV;
     volume = vol;
+    type = "Beverage";
 }
 
 float Beverage::getAbv()

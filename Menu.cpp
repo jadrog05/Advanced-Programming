@@ -85,5 +85,22 @@ void Menu::addBeverage(string line)
 
 void Menu::toString()
 {
-    
+    cout << "----------------Appetisers----------------" << endl;
+    Items[0]->toString();
+    for(int i = 1; i < Items.size(); i++)
+    {
+        if ((Items[i]->getItemType() == "MainCourse") && (Items[i-1]->getItemType() == "Appetiser"))
+        {
+            cout << "----------------Main dishes----------------" << endl;
+        }
+
+        if ((Items[i]->getItemType() == "Beverage") && (Items[i-1]->getItemType() == "MainCourse"))
+        {
+            cout << "----------------Beverages----------------" << endl;
+        }
+        
+        cout << "(" << to_string(i + 1) << ") ";
+        Items[i]->toString();
+        
+    }
 }

@@ -4,6 +4,7 @@ Appetiser::Appetiser(string na, int cal, float pri, bool share, bool twoFO) : It
 {
     shareable = share;
     twoForOne = twoFO;
+    type = "Appetiser";
 }
 
 void Appetiser::toString()
@@ -28,3 +29,4 @@ void Appetiser::toString()
     }
     cout << menuOutput << endl;
 }
+
