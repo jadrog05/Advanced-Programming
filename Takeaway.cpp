@@ -16,7 +16,7 @@ Good luck!
 #define _CRT_SECURE_NO_WARNINGS
 
 #include "Menu.h"
-//#include "Order.h"
+#include "Order.h"
 #include "Item.h"
 #include "Appetiser.h"
 #include "MainCourse.h"
@@ -32,14 +32,14 @@ using namespace std;
 
 int main()
 {
-		/*string userCommand;
+	string userCommand;
 	vector <string> parameters;
 
 	// Create a menu object from a CSV file
 	Menu menu = Menu("menu.csv");
 
 	// Create an order object
-	Order order = Order();
+	Order order = Order(menu.Items);
 
 	while (userCommand != "exit")
 	{
@@ -59,44 +59,41 @@ int main()
 		string command = parameters[0];
 
 		if (command.compare("menu") == 0) {
-			cout << menu.toString();
+			menu.toString();
 		}
 		else if (command.compare("add") == 0)
 		{
-			Item* choice; // you need to instantiate this using the menu object!
-			order.add(choice); 
-
-			// You may also wish to implement the ability to add multiple items at once!
-			// e.g. add 1 5 9 
+			int choice;
+			for (int i = 1; i < (parameters.size()); i++)
+			{
+				choice = stoi(parameters[i]);
+				if (choice > 0 && choice <menu.Items.size())
+				{
+					order.add(choice);
+					
+				}
+				else
+				{
+					cout << "This item number does not exist!" << endl;
+				}	
+			}
 		}
 		else if (command.compare("remove") == 0)
 		{
-			
+			int choice;
+			choice = stoi(parameters[1]);
+			order.remove(choice);
 		}
 		else if (command.compare("checkout") == 0)
 		{
-
+			order.toString();
 		}
 		else if (command.compare("help") == 0)
 		{
-			
+			cout << "get over it";
 		}
 
 		parameters.clear();
 
 	}
-	
-
-	cout << "Good evening" << endl;
-	std::getchar();
-	double price = 9.99;
-
-	MainCourse food("burger",234,2.35);
-	cout << food.getName() << endl;
-	cout << food.getCalories() << endl;
-	cout << food.getPrice() << endl;
-	*/
-	
-	Menu menu = Menu("menu.csv");
-	menu.toString();
 };

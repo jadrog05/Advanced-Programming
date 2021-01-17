@@ -30,3 +30,12 @@ void Appetiser::toString()
     cout << menuOutput << endl;
 }
 
+bool Appetiser::isShareable()
+{
+    return shareable;
+}
+
+bool Appetiser::isTwoForOne()
+{
+    return twoForOne;
+}

@@ -104,4 +104,5 @@ void Menu::toString()
         Items[i]->toString();
         
     }
+    cout << endl;
 }

@@ -1,13 +1,17 @@
 #pragma once
 #include "ItemList.h"
+
 using namespace std;
 
 class Order : public ItemList
 {
+    private:
+    vector<Item*> order_vec;
     public:
-    Order();
+    Order(vector<Item*> menu_vec);
     void toString();
-    void addItem(int itemNumber);
+    void add(int itemNumber);
+    void remove(int itemNumber);
     void calculateTotal();
     void printReceipt();
 };
