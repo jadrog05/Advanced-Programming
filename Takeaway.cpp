@@ -39,7 +39,7 @@ int main()
 	Menu menu = Menu("menu.csv");
 
 	// Create an order object
-	Order order = Order(menu.Items);
+	Order order = Order();
 
 	cout << "Welcome to the menu!" << endl;
 	cout << "Enter a command:" << endl;
@@ -62,6 +62,7 @@ int main()
 		string command = parameters[0];
 
 		if (command.compare("menu") == 0) {
+			cout << endl;
 			menu.toString();
 		}
 		else if (command.compare("add") == 0)
@@ -72,24 +73,26 @@ int main()
 				choice = stoi(parameters[i]);
 				if (choice > 0 && choice <menu.Items.size()+1)
 				{
-					order.add(choice);
-					
+					order.add(menu.Items[choice-1]);
 				}
 				else
 				{
 					cout << "This item number does not exist!" << endl;
 				}	
 			}
+			cout << endl;
 		}
 		else if (command.compare("remove") == 0)
 		{
 			int choice;
 			choice = stoi(parameters[1]);
-			order.remove(choice);
+			order.remove(menu.Items[choice-1]);
+			cout << endl;
 		}
 		else if (command.compare("checkout") == 0)
 		{
 			order.toString();
+			cout << endl;
 		}
 		else if (command.compare("help") == 0)
 		{
@@ -98,10 +101,12 @@ int main()
 			cout << "'remove' [index] : remove an item from your order according to item numbers in the menu" << endl;
 			cout << "'checkout'       : displays your order, with total and savings" << endl;
 			cout << "'exit'           : exit the program" << endl;
+			cout << endl;
 		}
 		else 
 		{
 			cout << "Invalid command: type 'help' for a list of commands!" << endl;
+			cout << endl;
 		}
 		parameters.clear();
 	}

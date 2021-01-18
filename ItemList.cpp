@@ -3,9 +3,8 @@
 ItemList::ItemList()
 {
 
-}
+};
 
-void ItemList::Load(Item*)
-{
+ItemList::~ItemList(){
 
-}
+};

@@ -38,7 +38,6 @@ void Menu::addAppetiser(string line)
         line_Vec.push_back(cell);
     }
 
-
     if(line_Vec[4] == "y")
     {
         share = true;

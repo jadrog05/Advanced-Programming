@@ -1,17 +1,17 @@
 #include "Order.h"
 
-Order::Order(vector<Item*> menu_vec)
+Order::Order()
 {
-    Items = menu_vec;
+    
 }
 
 void Order::toString()
 {
     cout << "===== Checkout =====" << endl;
-    for(int i = 0; i < order_vec.size(); i++)
+    for(int i = 0; i < Items.size(); i++)
     {
         cout << "(" << to_string(i + 1) << ")";
-        order_vec[i]->toString(false);
+        Items[i]->toString(false);
     }
     cout << "-------------" << endl;
 
@@ -26,49 +26,60 @@ void Order::toString()
     string userCommand;
     getline(cin, userCommand);
 
-    while (userCommand != "n")
+    while (userCommand != "n" && userCommand != "y")
     {
-        if (userCommand == "y")
-        {
-            printReceipt();
-            userCommand = "n";
-        }
-        else
-        {
-            cout << "Please enter a 'y' or an 'n'!" << endl;
-            getline(cin, userCommand);
-        }
-         
+        cout << "Please enter a 'y' or an 'n'!" << endl;
+        getline(cin, userCommand);
     }
+
+    if (userCommand == "y")
+    {
+        printReceipt();
+        cout << "Receipt printed to: 'receipt.txt'!" << endl;
+        exit(0);
+    }
+    else
+    {
+        cout << endl;
+        cout << "Welcome back to the menu!" << endl;
+        cout << "Enter a command: " << endl;
+    }
+
     cout << endl;
 }
 
-void Order::add(int itemNumber)
+
+
+void Order::add(Item* item)
 {
-    order_vec.push_back(Items[itemNumber - 1]);
-    cout << Items[itemNumber - 1]->getName() << " added to order!" << endl;
+    Items.push_back(item);
+    cout << item->getName() << " added to order!" << endl;
 }
 
-void Order::remove(int itemNumber)
+
+
+void Order::remove(Item* item)
 {
     bool complete = false;
 
-    if (order_vec.size() > 0)
+    if (Items.size() > 0)
     {
-        if (Items[itemNumber-1]->getName() == order_vec[0]->getName())
+        if (item->getName() == Items[0]->getName()) //edit
         {
-            order_vec.erase(order_vec.begin());
+            cout << Items[0]->getName() << " removed from order!" << endl;
+            Items.erase(Items.begin());
+            complete = true;
         }
         else
         {    
-            for (int i = 0; i < order_vec.size(); i++)
+            for (int i = 1; i < Items.size(); i++)
             {
                 if(complete == false)
                 {
-                    if (Items[itemNumber-1]->getName() == order_vec[i]->getName())
+                    if (item->getName() == Items[i]->getName())
                     {
-                    cout << order_vec[i]->getName() << " removed from order!" << endl;
-                    order_vec.erase(order_vec.begin() + (i));
+                    cout << item->getName() << " removed from order!" << endl;
+                    Items.erase(Items.begin() + (i));
                     complete = true;
                     }   
                 }        
@@ -83,18 +94,17 @@ void Order::remove(int itemNumber)
     {
         cout << "There are no items in your order!" << endl;
     }
-    
-
-
 }
+
+
 
 void Order::printReceipt()
 {
     ofstream myFile("receipt.txt");
     myFile << "===== Checkout =====" << endl;
-    for(int i = 0; i < order_vec.size(); i++)
+    for(int i = 0; i < Items.size(); i++)
     {
-        order_vec[i]->toString(true);
+        Items[i]->toString(true);
     }
     myFile.close();
     myFile.open("receipt.txt", ios_base::app);
@@ -102,7 +112,6 @@ void Order::printReceipt()
     myFile.close();
 
     calculateTotal(true);
-    exit;
 }
 
 void Order::calculateTotal(bool toReceipt)
@@ -112,15 +121,15 @@ void Order::calculateTotal(bool toReceipt)
     float temp = 0;
     int twoFOs =0;
 
-    for(int i = 0; i < order_vec.size(); i++)
+    for(int i = 0; i < Items.size(); i++)
     {
-        if (order_vec[i]->getName() == "Buffalo wings" || order_vec[i]->getName() == "Garlic bread")
+        if (Items[i]->getName() == "Buffalo wings" || Items[i]->getName() == "Garlic bread")
         {
             if (temp > 0)
             {
-                if (order_vec[i]->getPrice() < temp)
+                if (Items[i]->getPrice() < temp)
                 {
-                    temp = order_vec[i]->getPrice();
+                    temp = Items[i]->getPrice();
                 }
 
                 savings =+ temp;
@@ -128,11 +137,11 @@ void Order::calculateTotal(bool toReceipt)
             }
             else
             {
-                temp =+ order_vec[i]->getPrice();
+                temp =+ Items[i]->getPrice();
             }
             
         }
-        total = total + order_vec[i]->getPrice();
+        total = total + Items[i]->getPrice();
     }
 
     total = total - savings;

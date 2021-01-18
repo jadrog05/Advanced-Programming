@@ -6,12 +6,12 @@ using namespace std;
 class Order : public ItemList
 {
     private:
-    vector<Item*> order_vec;
+    vector<Item*> Items;
     public:
-    Order(vector<Item*> menu_vec);
+    Order();
     void toString();
-    void add(int itemNumber);
-    void remove(int itemNumber);
+    void add(Item* item);
+    void remove(Item* item);
     void calculateTotal(bool toReceipt);
     void printReceipt();
 };

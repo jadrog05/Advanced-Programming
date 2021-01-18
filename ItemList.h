@@ -14,5 +14,5 @@ public:
     vector<Item*> Items;
     virtual void toString() = 0;
     ItemList();
-    void Load(Item*);;
+    ~ItemList();
 };
