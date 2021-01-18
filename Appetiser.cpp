@@ -7,7 +7,7 @@ Appetiser::Appetiser(string na, int cal, float pri, bool share, bool twoFO) : It
     type = "Appetiser";
 }
 
-void Appetiser::toString()
+void Appetiser::toString(bool toReceipt)
 {
 
     string menuOutput;
@@ -27,8 +27,23 @@ void Appetiser::toString()
     {
         menuOutput.append(" (2-4-1)");
     }
-    cout << menuOutput << endl;
+
+    if (toReceipt == true)
+    {
+        ofstream myFile;
+        myFile.open("receipt.txt", ios_base::app);
+        myFile << menuOutput << endl;
+        myFile.close();
+    }
+    else if (toReceipt == false)
+    {
+        cout << menuOutput << endl;
+    }
+    
+    
+    
 }
+
 
 bool Appetiser::isShareable()
 {

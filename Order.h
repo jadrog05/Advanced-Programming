@@ -12,6 +12,6 @@ class Order : public ItemList
     void toString();
     void add(int itemNumber);
     void remove(int itemNumber);
-    void calculateTotal();
+    void calculateTotal(bool toReceipt);
     void printReceipt();
 };

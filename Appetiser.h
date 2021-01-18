@@ -10,5 +10,5 @@ public:
 	Appetiser(string na, int cal, float pri, bool share, bool twoFO);
 	bool isShareable();
 	bool isTwoForOne();
-	void toString();		
+	void toString(bool toReceipt);		
 };

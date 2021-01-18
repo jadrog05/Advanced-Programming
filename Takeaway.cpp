@@ -41,6 +41,9 @@ int main()
 	// Create an order object
 	Order order = Order(menu.Items);
 
+	cout << "Welcome to the menu!" << endl;
+	cout << "Enter a command:" << endl;
+
 	while (userCommand != "exit")
 	{
 		getline(cin, userCommand);
@@ -67,7 +70,7 @@ int main()
 			for (int i = 1; i < (parameters.size()); i++)
 			{
 				choice = stoi(parameters[i]);
-				if (choice > 0 && choice <menu.Items.size())
+				if (choice > 0 && choice <menu.Items.size()+1)
 				{
 					order.add(choice);
 					
@@ -90,10 +93,16 @@ int main()
 		}
 		else if (command.compare("help") == 0)
 		{
-			cout << "get over it";
+			cout << "'menu'           : display the menu" << endl;
+			cout << "'add' [index]    : add an item to your order according to item numbers in the menu" << endl;
+			cout << "'remove' [index] : remove an item from your order according to item numbers in the menu" << endl;
+			cout << "'checkout'       : displays your order, with total and savings" << endl;
+			cout << "'exit'           : exit the program" << endl;
 		}
-
+		else 
+		{
+			cout << "Invalid command: type 'help' for a list of commands!" << endl;
+		}
 		parameters.clear();
-
 	}
 };

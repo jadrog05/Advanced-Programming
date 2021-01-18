@@ -23,6 +23,7 @@ Menu::Menu(string filename)
                 break;
         }
     }
+    data.close();
 }
 
 void Menu::addAppetiser(string line)
@@ -87,7 +88,7 @@ void Menu::toString()
 {
     cout << "----------------Appetisers----------------" << endl;
     cout << "(1) ";
-    Items[0]->toString();
+    Items[0]->toString(false);
     for(int i = 1; i < Items.size(); i++)
     {
         if ((Items[i]->getItemType() == "MainCourse") && (Items[i-1]->getItemType() == "Appetiser"))
@@ -101,7 +102,7 @@ void Menu::toString()
         }
         
         cout << "(" << to_string(i + 1) << ") ";
-        Items[i]->toString();
+        Items[i]->toString(false);
         
     }
     cout << endl;

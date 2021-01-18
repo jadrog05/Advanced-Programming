@@ -17,7 +17,7 @@ int Beverage::getVolume()
     return volume;
 }
 
-void Beverage::toString()
+void Beverage::toString(bool toReceipt)
 {
     
     string menuOutput;
@@ -35,5 +35,16 @@ void Beverage::toString()
     string ABV_2dec = num_text.substr(0, num_text.find(".")+3);
     menuOutput.append(ABV_2dec);
     menuOutput.append("% ABV)");
-    cout << menuOutput << endl;
+
+    if (toReceipt == true)
+    {
+        ofstream myFile;
+        myFile.open("receipt.txt", ios_base::app);
+        myFile << menuOutput << endl;
+        myFile.close();
+    }
+    else if(toReceipt == false)
+    {
+        cout << menuOutput << endl;
+    }
 }	

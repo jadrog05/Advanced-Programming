@@ -8,7 +8,7 @@ private:
 	int volume;
 public:
 	Beverage(string na, int cal, float pri, float AlcBV, int vol);
-	void toString();
+	void toString(bool toReceipt);
 	float getAbv();
 	int getVolume();
 };

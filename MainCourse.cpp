@@ -5,7 +5,7 @@ MainCourse::MainCourse(string na, int cal, float pri) : Item(na, cal, pri)
 	type = "MainCourse";
 }
 
-void MainCourse::toString()
+void MainCourse::toString(bool toReceipt)
 {
     string menuOutput;
     menuOutput.append(name);
@@ -16,7 +16,18 @@ void MainCourse::toString()
     menuOutput.append(", ");
     menuOutput.append(to_string(calories));
     menuOutput.append(" cal");
-    cout << menuOutput << endl;
+
+    if (toReceipt == true)
+    {
+        ofstream myFile;
+        myFile.open("receipt.txt", ios_base::app);
+        myFile << menuOutput << endl;
+        myFile.close();
+    }
+    else if (toReceipt == false)
+    {
+        cout << menuOutput << endl;
+    }
 }
 	
 MainCourse::~MainCourse()
