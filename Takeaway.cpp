@@ -103,7 +103,7 @@ int main()
 			cout << "'exit'           : exit the program" << endl;
 			cout << endl;
 		}
-		else 
+		else if (command.compare("exit") != 0)
 		{
 			cout << "Invalid command: type 'help' for a list of commands!" << endl;
 			cout << endl;
