@@ -1,9 +1,7 @@
 ===== Checkout =====
-Garlic bread: £3.99, 500 cal (2-4-1)
-Mac & cheese: £7.99, 850 cal
-Lager: £3.50, 200 cal (568ml, 4.50% ABV)
-Burger: £9.99, 950 cal
 Buffalo wings: £3.99, 450 cal (2-4-1)
+Fish & chips: £8.99, 1000 cal
+Garlic bread: £3.99, 500 cal (2-4-1)
 -------------
 2-4-1 discount applied! Savings: £3.99
-Total: £25.46
+Total: £12.98

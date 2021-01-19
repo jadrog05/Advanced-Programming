@@ -5,17 +5,17 @@ Order::Order()
     
 }
 
-void Order::toString()
-{
+void Order::toString() //called when user enters 'checkout' command. Dislpays checkout and gives user the option to
+{                      //finish their order or modify it
     cout << "===== Checkout =====" << endl;
-    for(int i = 0; i < Items.size(); i++)
+    for(int i = 0; i < Items.size(); i++) //displays each item in the order
     {
-        cout << "(" << to_string(i + 1) << ")";
-        Items[i]->toString(false);
+        cout << "(" << to_string(i + 1) << ")"; 
+        Items[i]->toString(false); 
     }
     cout << "-------------" << endl;
 
-    calculateTotal(false);
+    calculateTotal(false); //calls calculateTotal to work out and print total and savings
 
     cout << endl;
     cout << endl;
@@ -26,7 +26,7 @@ void Order::toString()
     string userCommand;
     getline(cin, userCommand);
 
-    while (userCommand != "n" && userCommand != "y")
+    while (userCommand != "n" && userCommand != "y") //error handling. only continues when user enters either 'y' or 'n'
     {
         cout << "Please enter a 'y' or an 'n'!" << endl;
         getline(cin, userCommand);
@@ -36,7 +36,7 @@ void Order::toString()
     {
         printReceipt();
         cout << "Receipt printed to: 'receipt.txt'!" << endl;
-        exit(0);
+        exit(0); //ends program cleanly
     }
     else
     {
@@ -50,9 +50,9 @@ void Order::toString()
 
 
 
-void Order::add(Item* item)
+void Order::add(Item* item) //takes item from input and adds it to the order Itemlist
 {
-    Items.push_back(item);
+    Items.push_back(item); 
     cout << item->getName() << " added to order!" << endl;
 }
 
@@ -60,37 +60,30 @@ void Order::add(Item* item)
 
 void Order::remove(Item* item)
 {
-    bool complete = false;
+    bool complete = false; //to track if an item has been removed to prevent duplicate removal
 
-    if (Items.size() > 0)
+    if (Items.size() > 0) //only goes forward if there is actually items in the order
     {
-        if (item->getName() == Items[0]->getName()) //edit
+
+        for (int i = 0; i < Items.size(); i++) //finds the item in the order and removes it
         {
-            cout << Items[0]->getName() << " removed from order!" << endl;
-            Items.erase(Items.begin());
-            complete = true;
-        }
-        else
-        {    
-            for (int i = 1; i < Items.size(); i++)
+            if(complete == false) //if an item has already been removed it wont remove any more
             {
-                if(complete == false)
+                if (item->getName() == Items[i]->getName())
                 {
-                    if (item->getName() == Items[i]->getName())
-                    {
                     cout << item->getName() << " removed from order!" << endl;
                     Items.erase(Items.begin() + (i));
                     complete = true;
-                    }   
-                }        
-            }
+                }   
+            }        
         }
-        if (complete == false)
+        
+        if (complete == false) //if no items were removed
         {
         cout << "Invalid item number: no item removed!" << endl;
         }
     }
-    else
+    else //if the order was empty
     {
         cout << "There are no items in your order!" << endl;
     }
@@ -98,43 +91,43 @@ void Order::remove(Item* item)
 
 
 
-void Order::printReceipt()
+void Order::printReceipt() //prints the checkout dialog to a .txt file
 {
-    ofstream myFile("receipt.txt");
+    ofstream myFile("receipt.txt"); //creates file if there isnt one already or overwrites the existing one if it does
     myFile << "===== Checkout =====" << endl;
     for(int i = 0; i < Items.size(); i++)
     {
-        Items[i]->toString(true);
+        Items[i]->toString(true); //passes true to tell the item.toString method to output to the txt file instead of cout
     }
     myFile.close();
-    myFile.open("receipt.txt", ios_base::app);
+    myFile.open("receipt.txt", ios_base::app); //close and reopen the file into append mode so the rest isnt overwritten
     myFile << "-------------" << endl;
-    myFile.close();
+    myFile.close(); 
 
-    calculateTotal(true);
+    calculateTotal(true); //appends the total and savings part to the file as true is the parameter.
 }
 
-void Order::calculateTotal(bool toReceipt)
+void Order::calculateTotal(bool toReceipt) //calculates total and any savings from 2-4-1 deals
 {
     float total = 0;
     float savings = 0;
     float temp = 0;
     int twoFOs =0;
 
-    for(int i = 0; i < Items.size(); i++)
-    {
+    for(int i = 0; i < Items.size(); i++)//I couldnt find a way to call the Item.getTwoForOne() method without causing an error so
+    {                                    //as Items[i] could be any type of item so I had to use the names.   
         if (Items[i]->getName() == "Buffalo wings" || Items[i]->getName() == "Garlic bread")
         {
             if (temp > 0)
             {
-                if (Items[i]->getPrice() < temp)
-                {
+                if (Items[i]->getPrice() < temp) //detects the 2-4-1 deals in pairs in the same order as they appear in the order
+                {                          
                     temp = Items[i]->getPrice();
                 }
 
-                savings =+ temp;
-                temp = 0;
-            }
+                savings = savings + temp;
+                temp = 0; //if 2-4-1 is found, adds price to temp, if another 2-4-1 is found temp = lowest price of the two
+            }             //then temp is added to savings and temp set to 0
             else
             {
                 temp =+ Items[i]->getPrice();
@@ -146,13 +139,13 @@ void Order::calculateTotal(bool toReceipt)
 
     total = total - savings;
 
-    string total_text = std::to_string(total);
+    string total_text = std::to_string(total); 
     string total_str = total_text.substr(0, total_text.find(".")+3);
 
     string savings_text = std::to_string(savings);
     string savings_str = savings_text.substr(0, savings_text.find(".")+3);
 
-    if (toReceipt == false)
+    if (toReceipt == false) //either outputs the result to terminal or to receipt.txt depending on parameter
     {
         if (savings_str != "0.00")
         {

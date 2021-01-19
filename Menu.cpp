@@ -4,30 +4,40 @@ Menu::Menu(string filename)
 {
     ifstream data(filename);
     string line;
-    while(getline(data,line))
+    if (data)
     {
-        stringstream linestream(line);
-        switch (char ItemType = line.at(0))
+        while(getline(data,line)) //checks if file exists before trying to extract
         {
-            case 'a':
-                addAppetiser(line);
-                break;
-            case 'm':
-                addMainCourse(line);
-                break;
-            case 'b':
-                addBeverage(line);
-                break;
-            default:
-                cout << ItemType;
-                break;
+            stringstream linestream(line); 
+            switch (char ItemType = line.at(0)) //finds item type from file and calls the according method passing all the attributes as parameter
+            {
+                case 'a':
+                    addAppetiser(line);
+                    break;
+                case 'm':
+                    addMainCourse(line);
+                    break;
+                case 'b':
+                    addBeverage(line);
+                    break;
+                default:
+                    break;
+            }   
         }
+        data.close();
+    
     }
-    data.close();
+    else
+    {
+        cout << "That file doesnt exist!" << endl;
+        exit(0); //exits program if no menu.csv file is found
+    }
+    
+
 }
 
-void Menu::addAppetiser(string line)
-{
+void Menu::addAppetiser(string line) //extracts the data from the line input and constructs the item and adds it to menu item list
+{                                    //same for all these methods
     vector<string> line_Vec;
     stringstream linestream(line);
     string cell;
@@ -85,12 +95,12 @@ void Menu::addBeverage(string line)
 
 void Menu::toString()
 {
-    cout << "----------------Appetisers----------------" << endl;
-    cout << "(1) ";
+    cout << "----------------Appetisers----------------" << endl; //displays the menu as a string allowing for changes to the menu.csv
+    cout << "(1) ";                                               //as long as it follows the existing format
     Items[0]->toString(false);
     for(int i = 1; i < Items.size(); i++)
     {
-        if ((Items[i]->getItemType() == "MainCourse") && (Items[i-1]->getItemType() == "Appetiser"))
+        if ((Items[i]->getItemType() == "MainCourse") && (Items[i-1]->getItemType() == "Appetiser")) //when the type changes to main courses display the header
         {
             cout << "----------------Main dishes----------------" << endl;
         }

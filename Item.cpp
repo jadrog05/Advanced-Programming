@@ -11,9 +11,7 @@ Item::Item(string na, int cal, float pr)
     type = "Item";
 }
 
-Item::~Item(){
-    
-}
+Item::~Item(){}
 
 string Item::getName()
 {

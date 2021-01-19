@@ -7,8 +7,8 @@ Appetiser::Appetiser(string na, int cal, float pri, bool share, bool twoFO) : It
     type = "Appetiser";
 }
 
-void Appetiser::toString(bool toReceipt)
-{
+void Appetiser::toString(bool toReceipt) //outputs the items data in a line to either terminal or to receipt.txt
+{                                        //same for all item.tostring methods
 
     string menuOutput;
     menuOutput.append(name);
@@ -39,11 +39,7 @@ void Appetiser::toString(bool toReceipt)
     {
         cout << menuOutput << endl;
     }
-    
-    
-    
 }
-
 
 bool Appetiser::isShareable()
 {
