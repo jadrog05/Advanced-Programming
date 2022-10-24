@@ -28,10 +28,15 @@ The program logic should be implemented in Takeaway.cpp, which should initialise
 You should write code to accept input commands with the following syntax:
 
 menu - display the menu to the user
+
 add [INDEX] - add an item to the order by numeric index in the menu (starting at 1) 
+
 remove [INDEX] - remove item from order by numeric index in the order (starting at 1) 
+
 checkout - display the items in the user’s order, the price, and discount savings
+
 help - display a help menu for the user with the available options
+
 exit - terminate the program gracefully
 
 Upon checkout, give the user the option to either complete their order (output their receipt and terminate gracefully) or go back and modify it. 
@@ -47,20 +52,35 @@ Here is a sample execution:
 1. User selects the menu option, producing output such as shown below:
  
 ----------------Appetisers----------------
+
 (1) Nachos: £4.99, 600 cal (shareable)
+
 (2) Buffalo wings: £3.99, 450 cal (2-4-1)
+
 (3) Garlic bread: £3.99, 500 cal (2-4-1) 
+
 ----------------Main dishes----------------
+
 (4) Burger: £9.99, 950 cal
+
 (5) Mac & cheese: £7.99, 850 cal
+
 (6) Fish & chips: £8.99, 1000 cal
+
 (7) Chicken tikka masala: £6.99, 700 cal 
+
 ----------------Beverages----------------
+
 (8) Lager: £3.50, 200 cal (568ml, 4.5% abv)
+
 (9) White wine: £4.00, 150 cal (175ml, 11.5% abv) 
+
 (10) Red wine: £4.00, 170 cal (175ml, 12.5% abv) 
+
 (11) Coke: £2.50, 140 cal (330ml)
+
 (12) Water: £1.50, 0 cal (330ml)
+
 
 2. User adds an appetiser, e.g., add 2
 The corresponding pointer is retrieved from the Menu object The pointer is then added to the Order object
