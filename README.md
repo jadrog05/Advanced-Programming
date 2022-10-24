@@ -44,7 +44,8 @@ Additional marks may be awarded for the use of STL/contemporary C++ components i
 
 Here is a sample execution:
 
-1. User selects the menu option, producing output such as shown below: 
+1. User selects the menu option, producing output such as shown below:
+ 
 ----------------Appetisers----------------
 (1) Nachos: £4.99, 600 cal (shareable)
 (2) Buffalo wings: £3.99, 450 cal (2-4-1)
@@ -56,7 +57,9 @@ Here is a sample execution:
 (7) Chicken tikka masala: £6.99, 700 cal 
 ----------------Beverages----------------
 (8) Lager: £3.50, 200 cal (568ml, 4.5% abv)
-(9) White wine: £4.00, 150 cal (175ml, 11.5% abv) (10) Red wine: £4.00, 170 cal (175ml, 12.5% abv) (11) Coke: £2.50, 140 cal (330ml)
+(9) White wine: £4.00, 150 cal (175ml, 11.5% abv) 
+(10) Red wine: £4.00, 170 cal (175ml, 12.5% abv) 
+(11) Coke: £2.50, 140 cal (330ml)
 (12) Water: £1.50, 0 cal (330ml)
 
 2. User adds an appetiser, e.g., add 2
